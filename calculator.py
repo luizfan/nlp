@@ -5,7 +5,6 @@ def calculate_class_score(sentence,class_name):
     sentence = tokenize(sentence)
     sentence = remove_stopwords(sentence)
     sentence = stemming(sentence)
-    print(sentence)
     dados = load_corpus()
     for word in sentence:
         if word in dados[class_name]:
