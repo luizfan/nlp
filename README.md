@@ -75,3 +75,11 @@ body:
    phrase:'write something'
 
 ```
+
+teach the algorithm new answers
+```
+POST /answer
+body:
+   answer:'type something here'
+   class: 'answer class'
+```
