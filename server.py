@@ -12,14 +12,14 @@ def health_check():
 @app.route("/training", methods = ['GET'])
 def training():
     save_corpus(learning(train()))
-    return create_response(200,{"status":"phrases included"})
+    return create_response(200,{"status":"examples phrases included"})
 
 @app.route("/training", methods = ['POST'])
 def newPhrase():
     phrase = request.form.get('phrase')
     class_name = request.form.get('class')
     save_corpus(learning([{'class':class_name,'phrase':phrase}]))
-    return create_response(200,{"status":"phrases included"})
+    return create_response(200,{"status":"phrase included"})
 
 @app.route("/classify", methods = ['GET'])
 def classify():
