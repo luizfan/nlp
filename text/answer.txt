@@ -1,0 +1,1 @@
+﻿{'amor':'Você é como o Google. Tudo que eu procuro, eu encontro em você', 'medo':'"As únicas coisas que me dão medo são mulheres e baratas" Linspector,Joel(CTO FCamara)','fome':'O pior vazio é o do meu estômago','default':'Não entendi, tava doidão'}

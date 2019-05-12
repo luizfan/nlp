@@ -1,1 +1,1 @@
-{'amor': {'amo': 2, 'am': 2, 'vid': 2}, 'medo': {'med': 4, 'fantasm': 2}, 'fome': {'fom': 2, 'famint': 2}}
+{'dor': {'doenc': 1}, 'amor': {'amo': 1, 'voc': 1, 'am': 1, 'vid': 1}, 'medo': {'med': 2, 'fantasm': 1}, 'fome': {'fom': 1, 'famint': 1}}

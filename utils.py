@@ -41,9 +41,8 @@ def save_corpus(w):
     fileW.close()
 
 def load_corpus():
-    fileW = open("text/corpus.txt", 'r')
-    words = fileW.read()
-    fileW.close()
+    with open("text/corpus.txt", "rb") as f:
+        words = f.read().decode("UTF-8")
     words = yaml.load(words,Loader=yaml.FullLoader)
     if words is None:
         return {}
@@ -53,3 +52,16 @@ def load_stopword():
     with open('text/stopwords.txt', 'r') as f:
         stopwords = [strip_accents(line.strip()) for line in f] 
     return stopwords
+
+def save_answer(w):
+    fileW = open("text/answer.txt", 'w')
+    fileW.write(str(w))
+    fileW.close()
+
+def load_answer():
+    with open("text/answer.txt", "rb") as f:
+        answer = f.read().decode("UTF-8")
+    answer = yaml.load(answer,Loader=yaml.FullLoader)
+    if answer is None:
+        return {}
+    return answer
