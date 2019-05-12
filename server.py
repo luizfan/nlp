@@ -1,7 +1,7 @@
 from flask import Flask,json,request
 from train import learning,sample
 from utils import save_corpus
-from answer import return_answer
+from answer import return_answer,include_answer
 from calculator import calculate_score
 
 app = Flask(__name__)
@@ -31,6 +31,13 @@ def classify():
 def chat():
     phrase = request.form.get('phrase')
     return create_response(200,{'answer':return_answer(calculate_score(phrase)['classname'])})
+
+@app.route("/answer", methods = ['POST'])
+def save_answer():
+    answer = request.form.get('answer')
+    classname = request.form.get('class')
+    include_answer(classname,answer)
+    return create_response(200,{"status":"answer included"})
 
 def create_response(statusCode, data):
     response = app.response_class(

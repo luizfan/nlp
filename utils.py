@@ -1,6 +1,7 @@
 import yaml
 import nltk
 import unicodedata
+import codecs
 from nltk.stem import RSLPStemmer
 
 def tokenize(sentence):
@@ -54,7 +55,7 @@ def load_stopword():
     return stopwords
 
 def save_answer(w):
-    fileW = open("text/answer.txt", 'w')
+    fileW = codecs.open("text/answer.txt", "w", "utf-8")
     fileW.write(str(w))
     fileW.close()
 
