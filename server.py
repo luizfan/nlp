@@ -1,5 +1,5 @@
 from flask import Flask,json,request
-from train import learning,train
+from train import learning,sample
 from utils import save_corpus
 from calculator import calculate_score
 
@@ -9,13 +9,13 @@ app = Flask(__name__)
 def health_check():
     return create_response(200,{"status":"UP"})
 
-@app.route("/training", methods = ['GET'])
-def training():
-    save_corpus(learning(train()))
-    return create_response(200,{"status":"examples phrases included"})
+@app.route("/train", methods = ['GET'])
+def train_with_examples():
+    save_corpus(learning(sample()))
+    return create_response(200,{"status":"sample phrases included"})
 
-@app.route("/training", methods = ['POST'])
-def newPhrase():
+@app.route("/train", methods = ['POST'])
+def train():
     phrase = request.form.get('phrase')
     class_name = request.form.get('class')
     save_corpus(learning([{'class':class_name,'phrase':phrase}]))
@@ -23,6 +23,11 @@ def newPhrase():
 
 @app.route("/classify", methods = ['GET'])
 def classify():
+    phrase = request.form.get('phrase')
+    return create_response(200,calculate_score(phrase))
+
+@app.route("/chat", methods = ['GET'])
+def chat():
     phrase = request.form.get('phrase')
     return create_response(200,calculate_score(phrase))
 

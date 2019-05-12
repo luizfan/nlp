@@ -19,7 +19,7 @@ def learning(training_data):
     return corpus_words
 
 
-def train():
+def sample():
     training_data = []
     training_data.append({"class":"amor", "phrase":"Eu te amo"})
     training_data.append({"class":"amor", "phrase":"Você é o amor da minha vida"})
