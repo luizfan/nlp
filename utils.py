@@ -9,21 +9,6 @@ def tokenize(sentence):
     sentence = nltk.word_tokenize(sentence)
     return sentence
 
-def stemming(sentence):
-    stemmer = RSLPStemmer()
-    phrase = []
-    for word in sentence:
-        phrase.append(stemmer.stem(word.lower()))
-    return phrase
-
-def remove_stopwords(sentence):
-    stopwords = nltk.corpus.stopwords.words('portuguese')
-    phrase = []
-    for word in sentence:
-        if word not in stopwords:
-            phrase.append(word)
-    return phrase
-
 def strip_accents(sentence):
     try:
         sentence = unicode(sentence, 'utf-8')
@@ -35,6 +20,20 @@ def strip_accents(sentence):
            .decode("utf-8")
     return str(sentence)
 
+def remove_stopwords(sentence):
+    stopwords = load_stopword()
+    phrase = []
+    for word in sentence:
+        if word not in stopwords:
+            phrase.append(word)
+    return phrase
+
+def stemming(sentence):
+    stemmer = RSLPStemmer()
+    phrase = []
+    for word in sentence:
+        phrase.append(stemmer.stem(word.lower()))
+    return phrase
 
 def save_corpus(w):
     fileW = open("corpus.nlp", 'w')
@@ -49,3 +48,8 @@ def load_corpus():
     if words is None:
         return {}
     return words
+
+def load_stopword():
+    with open('stopwords.txt', 'r') as f:
+        stopwords = [strip_accents(line.strip()) for line in f] 
+    return stopwords

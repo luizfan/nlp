@@ -3,8 +3,9 @@ from utils import tokenize,stemming,remove_stopwords,load_corpus
 def calculate_class_score(sentence,class_name):
     score = 0 
     sentence = tokenize(sentence)
-    sentence = stemming(sentence)
     sentence = remove_stopwords(sentence)
+    sentence = stemming(sentence)
+    print(sentence)
     dados = load_corpus()
     for word in sentence:
         if word in dados[class_name]:

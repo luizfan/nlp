@@ -14,10 +14,16 @@ def training():
     save_corpus(learning(train()))
     return create_response(200,{"status":"phrases included"})
 
+@app.route("/training", methods = ['POST'])
+def newPhrase():
+    phrase = request.form.get('phrase')
+    class_name = request.form.get('class')
+    save_corpus(learning([{'class':class_name,'phrase':phrase}]))
+    return create_response(200,{"status":"phrases included"})
+
 @app.route("/classify", methods = ['GET'])
 def classify():
     phrase = request.form.get('phrase')
-    print(phrase)    
     return create_response(200,calculate_score(phrase))
 
 def create_response(statusCode, data):
