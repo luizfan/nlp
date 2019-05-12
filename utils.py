@@ -36,12 +36,12 @@ def stemming(sentence):
     return phrase
 
 def save_corpus(w):
-    fileW = open("words/corpus.nlp", 'w')
+    fileW = open("text/corpus.txt", 'w')
     fileW.write(str(w))
     fileW.close()
 
 def load_corpus():
-    fileW = open("words/corpus.nlp", 'r')
+    fileW = open("text/corpus.txt", 'r')
     words = fileW.read()
     fileW.close()
     words = yaml.load(words,Loader=yaml.FullLoader)
@@ -50,6 +50,6 @@ def load_corpus():
     return words
 
 def load_stopword():
-    with open('words/stopwords.txt', 'r') as f:
+    with open('text/stopwords.txt', 'r') as f:
         stopwords = [strip_accents(line.strip()) for line in f] 
     return stopwords
