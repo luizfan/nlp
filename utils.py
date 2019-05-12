@@ -37,7 +37,7 @@ def stemming(sentence):
     return phrase
 
 def save_corpus(w):
-    fileW = open("text/corpus.txt", 'w')
+    fileW = codecs.open("text/corpus.txt", "w", "utf-8")
     fileW.write(str(w))
     fileW.close()
 
