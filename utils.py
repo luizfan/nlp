@@ -4,7 +4,7 @@ import unicodedata
 import codecs
 from nltk.stem import RSLPStemmer
 
-def tokenize(sentence):
+def normalize(sentence):
     sentence = sentence.lower()
     sentence = strip_accents(sentence)
     sentence = nltk.word_tokenize(sentence)

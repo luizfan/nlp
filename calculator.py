@@ -1,8 +1,8 @@
-from utils import tokenize,stemming,remove_stopwords,load_corpus
+from utils import normalize,stemming,remove_stopwords,load_corpus
 
 def calculate_class_score(sentence,class_name):
     score = 0 
-    sentence = tokenize(sentence)
+    sentence = normalize(sentence)
     sentence = remove_stopwords(sentence)
     sentence = stemming(sentence)
     dados = load_corpus()

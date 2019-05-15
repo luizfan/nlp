@@ -1,10 +1,10 @@
-from utils import tokenize,stemming,remove_stopwords,load_corpus
+from utils import normalize,stemming,remove_stopwords,load_corpus
 
 def learning(training_data):
     corpus_words = load_corpus()
     for data in training_data:
         phrase = data['phrase']
-        phrase = tokenize(phrase)
+        phrase = normalize(phrase)
         phrase = remove_stopwords(phrase)
         phrase = stemming(phrase)
 
