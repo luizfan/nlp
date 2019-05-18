@@ -1,6 +1,6 @@
 from flask import Flask,json,request
 from train import learning,sample
-from utils import save_corpus,normalize
+from utils import save_corpus,normalize,remove_stopwords
 from answer import return_answer,include_answer
 from calculator import calculate_score
 
@@ -42,7 +42,12 @@ def save_answer():
 @app.route("/normalize", methods = ['GET'])
 def return_normalize():
     phrase = request.form.get('phrase')
-    return create_response(200,{"normalize":normalize(phrase)})
+    return create_response(200,{"phrase":normalize(phrase)})
+
+@app.route("/stopwords", methods = ['GET'])
+def return_remove_stopwords():
+    phrase = request.form.get('phrase')
+    return create_response(200,{"phrase":remove_stopwords(normalize(phrase))})
 
 def create_response(statusCode, data):
     response = app.response_class(
