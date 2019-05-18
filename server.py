@@ -1,6 +1,6 @@
 from flask import Flask,json,request
 from train import learning,sample
-from utils import save_corpus
+from utils import save_corpus,normalize
 from answer import return_answer,include_answer
 from calculator import calculate_score
 
@@ -38,6 +38,11 @@ def save_answer():
     classname = request.form.get('class')
     include_answer(classname,answer)
     return create_response(200,{"status":"answer included"})
+
+@app.route("/normalize", methods = ['GET'])
+def return_normalize():
+    phrase = request.form.get('phrase')
+    return create_response(200,{"normalize":normalize(phrase)})
 
 def create_response(statusCode, data):
     response = app.response_class(
